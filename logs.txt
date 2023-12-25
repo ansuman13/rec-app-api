@@ -1,0 +1,79 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [app internal] load .dockerignore
+#1 transferring context: 192B done
+#1 DONE 0.0s
+
+#2 [app internal] load build definition from Dockerfile
+#2 transferring dockerfile: 732B done
+#2 DONE 0.0s
+
+#3 [app internal] load metadata for docker.io/library/python:3.9-alpine3.13
+#3 DONE 0.7s
+
+#4 [app 1/6] FROM docker.io/library/python:3.9-alpine3.13@sha256:a7cbd1e7784a35a098cedbc8681b790d35ff6030a5e13f043185e2465003a040
+#4 DONE 0.0s
+
+#5 [app internal] load build context
+#5 transferring context: 129B done
+#5 DONE 0.0s
+
+#6 [app 4/6] COPY ./app /app
+#6 CACHED
+
+#7 [app 2/6] COPY ./requirements.txt /tmp/requirements.txt
+#7 CACHED
+
+#8 [app 3/6] COPY ./requirements.dev.txt /tmp/requirements.dev.txt
+#8 CACHED
+
+#9 [app 5/6] WORKDIR /app
+#9 CACHED
+
+#10 [app 6/6] RUN python -m venv /py &&     /py/bin/pip install --upgrade pip &&     /py/bin/pip install -r /tmp/requirements.txt &&     echo true &&     if [ true= "true" ];         then echo "install dev dependencies!!" &&         /py/bin/pip install -r /tmp/requirements.dev.txt;     fi &&     rm -rf /tmp &&     adduser         --disabled-password         --no-create-home         django-user
+#10 2.895 Requirement already satisfied: pip in /py/lib/python3.9/site-packages (21.2.4)
+#10 3.056 Collecting pip
+#10 3.258   Downloading pip-23.3.2-py3-none-any.whl (2.1 MB)
+#10 3.661 Installing collected packages: pip
+#10 3.661   Attempting uninstall: pip
+#10 3.661     Found existing installation: pip 21.2.4
+#10 3.715     Uninstalling pip-21.2.4:
+#10 3.720       Successfully uninstalled pip-21.2.4
+#10 4.515 Successfully installed pip-23.3.2
+#10 5.066 Collecting Django<3.3,>=3.2.4 (from -r /tmp/requirements.txt (line 1))
+#10 5.237   Downloading Django-3.2.23-py3-none-any.whl.metadata (4.1 kB)
+#10 5.289 Collecting djangorestframework<3.13,>=3.12.4 (from -r /tmp/requirements.txt (line 2))
+#10 5.318   Downloading djangorestframework-3.12.4-py3-none-any.whl (957 kB)
+#10 5.499      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 957.7/957.7 kB 5.4 MB/s eta 0:00:00
+#10 5.556 Collecting asgiref<4,>=3.3.2 (from Django<3.3,>=3.2.4->-r /tmp/requirements.txt (line 1))
+#10 5.586   Downloading asgiref-3.7.2-py3-none-any.whl.metadata (9.2 kB)
+#10 5.652 Collecting pytz (from Django<3.3,>=3.2.4->-r /tmp/requirements.txt (line 1))
+#10 5.679   Downloading pytz-2023.3.post1-py2.py3-none-any.whl.metadata (22 kB)
+#10 5.709 Collecting sqlparse>=0.2.2 (from Django<3.3,>=3.2.4->-r /tmp/requirements.txt (line 1))
+#10 5.736   Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+#10 5.743      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 7.1 MB/s eta 0:00:00
+#10 5.787 Collecting typing-extensions>=4 (from asgiref<4,>=3.3.2->Django<3.3,>=3.2.4->-r /tmp/requirements.txt (line 1))
+#10 5.815   Downloading typing_extensions-4.9.0-py3-none-any.whl.metadata (3.0 kB)
+#10 5.849 Downloading Django-3.2.23-py3-none-any.whl (7.9 MB)
+#10 7.079    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.9/7.9 MB 6.4 MB/s eta 0:00:00
+#10 7.109 Downloading asgiref-3.7.2-py3-none-any.whl (24 kB)
+#10 7.145 Downloading pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)
+#10 7.233    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.5/502.5 kB 5.8 MB/s eta 0:00:00
+#10 7.261 Downloading typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+#10 7.339 Installing collected packages: pytz, typing-extensions, sqlparse, asgiref, Django, djangorestframework
+#10 8.856 Successfully installed Django-3.2.23 asgiref-3.7.2 djangorestframework-3.12.4 pytz-2023.3.post1 sqlparse-0.4.4 typing-extensions-4.9.0
+#10 8.922 true
+#10 8.922 sh: true: unknown operand
+#10 DONE 9.1s
+
+#11 [app] exporting to image
+#11 exporting layers
+#11 exporting layers 0.6s done
+#11 writing image sha256:dde63d5a02a814461bb211a8934239f86e4c1624bcd8f61b5ac9749d48ca49c8 done
+#11 naming to docker.io/library/rec-app-api-app done
+#11 DONE 0.6s
+ Container rec-app-api-app-1  Recreate
+ Container rec-app-api-app-1  Recreated
+Attaching to rec-app-api-app-1
+rec-app-api-app-1  | python: can't open file '/app/manage.py': [Errno 2] No such file or directory
+rec-app-api-app-1 exited with code 2
